@@ -1,0 +1,118 @@
+openapi: 3.0.0
+info:
+  title: Notes API
+  description: API for managing notes with CRUD operations and file uploads.
+  version: 1.0.0
+servers:
+  - url: 'http://{host}:{port}'
+    variables:
+      host:
+        default: 'localhost'
+      port:
+        default: '3000'
+paths:
+  /notes:
+    get:
+      summary: Retrieve a list of all notes
+      responses:
+        200:
+          description: A JSON array of notes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    text:
+                      type: string
+  /notes/{name}:
+    get:
+      summary: Retrieve a specific note by name
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: The note content
+          content:
+            text/plain:
+              schema:
+                type: string
+        404:
+          description: Note not found
+    put:
+      summary: Update a specific note
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        200:
+          description: Note updated
+        404:
+          description: Note not found
+    delete:
+      summary: Delete a specific note
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Note deleted
+        404:
+          description: Note not found
+  /write:
+    post:
+      summary: Create a new note
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                note_name:
+                  type: string
+                note:
+                  type: string
+      responses:
+        201:
+          description: Note created
+        400:
+          description: Note already exists
+  /UploadForm.html:
+    get:
+      summary: Retrieve the note upload form
+      responses:
+        200:
+          description: HTML form for uploading notes
+          content:
+            text/html:
+              schema:
+                type: string
+components:
+  schemas:
+    Note:
+      type: object
+      properties:
+        name:
+          type: string
+        text:
+          type: string
