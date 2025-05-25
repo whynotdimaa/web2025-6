@@ -1,0 +1,104 @@
+{
+  "info": {
+    "name": "Notes Service",
+    "_postman_id": "d5f8e8e0-d894-4936-a3f5-391682ee794f",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Notes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/notes",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes"]
+        }
+      }
+    },
+    {
+      "name": "Get Note",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/notes/test_note",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes", "test_note"]
+        }
+      }
+    },
+    {
+      "name": "Update Note",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "Updated note content"
+        },
+        "url": {
+          "raw": "http://localhost:3000/notes/test_note",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes", "test_note"]
+        }
+      }
+    },
+    {
+      "name": "Delete Note",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/notes/test_note",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["notes", "test_note"]
+        }
+      }
+    },
+    {
+      "name": "Create Note",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "note_name", "value": "test_note", "type": "text" },
+            { "key": "note", "value": "This is a test note", "type": "text" }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/write",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["write"]
+        }
+      }
+    },
+    {
+      "name": "Get Upload Form",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/UploadForm.html",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["UploadForm.html"]
+        }
+      }
+    }
+  ]
+}
